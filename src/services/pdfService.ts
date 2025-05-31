@@ -166,11 +166,8 @@ export async function generateExcelFromResults(
       baseFileName = "Consolidado";
   }
 
-  let tituloExtraido: string | undefined;
-  if (successes.length === 1 && successes[0]?.titulo) {
-    tituloExtraido = successes[0].titulo;
-  }
-  const nombreArchivo = successes.length === 1 && tituloExtraido ? tituloExtraido : baseFileName;
+  // Siempre usar el nombre base, nunca el título extraído del PDF
+  const nombreArchivo = baseFileName;
 
   const registros = successes.map((r) => ({
     "Nombre PDF": r.fileName,
